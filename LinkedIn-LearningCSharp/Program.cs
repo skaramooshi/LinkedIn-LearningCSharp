@@ -14,15 +14,13 @@ namespace LinkedIn_LearningCSharp
                 Console.WriteLine("Input password");
                 password = Console.ReadLine();
 
-                if (password == "secret")
-                {
-                    Console.WriteLine("that is the correct password");
-                }
-                else if (password != "secret")
+                if (password != "secret")
                 {
                     Console.WriteLine("Incorrect password");
                 }
             }
+            Console.WriteLine("that is the correct password");
+
 
             Console.WriteLine("What is your name?");
             var name = Console.ReadLine();
@@ -38,9 +36,9 @@ namespace LinkedIn_LearningCSharp
             Console.WriteLine("Your month of birth is {0}", month);
 
             if (month == "march")
-                {
+             {
                     Console.WriteLine("You are an Aries.");
-                }
+             }
 
             if (month == "April")
             {
