@@ -42,29 +42,15 @@ namespace LinkedIn_LearningCSharp
             */
 
             Console.WriteLine("What is your name?");
-            var name = Console.ReadLine();
-
-            if(name == "") 
-            {
-                name = TryAgain();
-            }
+            var name = TryAnswer();
+     
 
             Console.WriteLine("How old are you?");
-            var age = Console.ReadLine();
-
-            if (age == "")
-            {
-                age = TryAgain();
-            }
+            var age = TryAnswer();
 
 
             Console.WriteLine("What month were you born?");
-            var month = Console.ReadLine();
-
-            if (month == "")
-            {
-                month = TryAgain();
-            }
+            var month = TryAnswer();
 
 
             Console.WriteLine("Your name is {0}", name);
@@ -87,10 +73,15 @@ namespace LinkedIn_LearningCSharp
             }
         }
 
-        static string TryAgain()
+        static string TryAnswer()
         {
-            Console.WriteLine("You didn't write anything. Please try again.");
-            return Console.ReadLine();
+            var answer = Console.ReadLine();
+            if (answer == "")
+            {
+                Console.WriteLine("You didn't write anything. Please try again.");
+                return Console.ReadLine();
+            }
+            return answer;
         }
     }
 }
