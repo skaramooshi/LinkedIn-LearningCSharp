@@ -6,6 +6,23 @@ namespace LinkedIn_LearningCSharp
     {
         static void Main(string[] args)
         {
+            for (int z = 1; z <= 5; z++)
+            {
+                for (int i = 1; i <= 10; i++)
+                {
+                    Console.WriteLine(i);
+                }
+
+                for (int i = 10; i >= 1; i--)
+                {
+                    Console.WriteLine(i);
+                }
+            }
+            
+            
+            
+            
+            
             var password = "";
             
             while (password != "secret")
