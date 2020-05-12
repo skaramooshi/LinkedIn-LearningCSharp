@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 
 namespace SchoolTracker
 {
@@ -29,7 +30,7 @@ namespace SchoolTracker
                 newStudent.Address = Console.ReadLine();
 
                 Console.WriteLine("Student Phone number: ");
-                newStudent.Phone = int.Parse(Console.ReadLine());
+                newStudent.SetPhone(int.Parse(Console.ReadLine()));
 
 
 
@@ -58,9 +59,12 @@ namespace SchoolTracker
         public int Grade;
         public string Birthday;
         public string Address;
-        public int Phone;
+        private int phone;
 
-
+        public void SetPhone(int number)
+        {
+            phone = number;
+        }
 
     }
 }
