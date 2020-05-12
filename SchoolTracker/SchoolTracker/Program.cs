@@ -7,20 +7,34 @@ namespace SchoolTracker
     {
         static void Main(string[] args)
         {
+            var students = new List<Student>();
 
-            var studentNames = new List<string>();
-            var studentGrades = new List<int>();
 
             var adding = true;
 
             while(adding)
             {
+                var newStudent = new Student();
+                
                 Console.WriteLine("Student Name: ");
-                studentNames.Add(Console.ReadLine());
+                newStudent.Name = Console.ReadLine();
 
                 Console.WriteLine("Student Grade: ");
-                studentGrades.Add(int.Parse(Console.ReadLine()));
+                newStudent.Grade = int.Parse(Console.ReadLine());
 
+                Console.WriteLine("Student Birthday: ");
+                newStudent.Birthday = Console.ReadLine();
+
+                Console.WriteLine("Student Address: ");
+                newStudent.Address = Console.ReadLine();
+
+                Console.WriteLine("Student Phone number: ");
+                newStudent.Phone = int.Parse(Console.ReadLine());
+
+
+
+                students.Add(newStudent);
+                
                 Console.WriteLine("Add another? y/n");
 
                 if (Console.ReadLine() != "y")
@@ -28,11 +42,25 @@ namespace SchoolTracker
 
             }
 
-            for (int i = 0; i < studentNames.Count; i++)
+            foreach (var student in students)
             {
-                Console.WriteLine("Name: {0}, Grade: {1}", studentNames[i], studentGrades[i]);
+
+            
+                Console.WriteLine("Name: {0}, Grade: {1}", student.Name, student.Grade);
 
             }
         }
+    }
+
+    class Student
+    {
+        public string Name;
+        public int Grade;
+        public string Birthday;
+        public string Address;
+        public int Phone;
+
+
+
     }
 }
