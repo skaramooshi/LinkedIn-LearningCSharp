@@ -16,25 +16,22 @@ namespace SchoolTracker
             while(adding)
             {
                 var newStudent = new Student();
+
+                newStudent.Name = Util.Console.Ask("Student Name: ");
                 
-                Console.WriteLine("Student Name: ");
-                newStudent.Name = Console.ReadLine();
+                newStudent.Grade = int.Parse(Util.Console.Ask("Student Grade: "));
 
-                Console.WriteLine("Student Grade: ");
-                newStudent.Grade = int.Parse(Console.ReadLine());
+                newStudent.Birthday = Util.Console.Ask("Student Birthday: ");
 
-                Console.WriteLine("Student Birthday: ");
-                newStudent.Birthday = Console.ReadLine();
+                newStudent.Address = Util.Console.Ask("Student Address: ");
 
-                Console.WriteLine("Student Address: ");
-                newStudent.Address = Console.ReadLine();
-
-                Console.WriteLine("Student Phone number: ");
-                newStudent.Phone = int.Parse(Console.ReadLine());
+                newStudent.Phone = int.Parse(Util.Console.Ask("Student Phone number: "));
 
 
 
                 students.Add(newStudent);
+                Student.Count++;
+                Console.WriteLine("Student count: {0}", Student.Count);
                 
                 Console.WriteLine("Add another? y/n");
 
@@ -55,6 +52,8 @@ namespace SchoolTracker
 
     class Student
     {
+        static public int Count = 0;
+        
         public string Name;
         public int Grade;
         public string Birthday;
