@@ -14,33 +14,38 @@ namespace SchoolTracker
 
             while(adding)
             {
-                var newStudent = new Student();
-
-                newStudent.Name = Util.Console.Ask("Student Name: ");
-                
-                var result = int.TryParse(Util.Console.Ask("Student Grade: "), out newStudent.Grade);
-
-                if (!result)
+                try
                 {
-                    Console.WriteLine("error, please enter a number");
+                    var newStudent = new Student();
+
+                    newStudent.Name = Util.Console.Ask("Student Name: ");
+
+                    newStudent.Grade = int.Parse(Util.Console.Ask("Student Grade: "));
+
+                    newStudent.Birthday = Util.Console.Ask("Student Birthday: ");
+
+                    newStudent.Address = Util.Console.Ask("Student Address: ");
+
+                    newStudent.Phone = int.Parse(Util.Console.Ask("Student Phone number: "));
+
+                    students.Add(newStudent);
+                    Student.Count++;
+                    Console.WriteLine("Student count: {0}", Student.Count);
+
+                    Console.WriteLine("Add another? y/n");
+
+                    if (Console.ReadLine() != "y")
+                        adding = false;
                 }
-
-                newStudent.Birthday = Util.Console.Ask("Student Birthday: ");
-
-                newStudent.Address = Util.Console.Ask("Student Address: ");
-
-                newStudent.Phone = int.Parse(Util.Console.Ask("Student Phone number: "));
-
-
-
-                students.Add(newStudent);
-                Student.Count++;
-                Console.WriteLine("Student count: {0}", Student.Count);
+                catch (FormatException)
+                {
+                    Console.WriteLine("Input was not a number");
+                }
+                catch (Exception)
+                {
+                    Console.WriteLine("Error adding student, please try again");
+                }
                 
-                Console.WriteLine("Add another? y/n");
-
-                if (Console.ReadLine() != "y")
-                    adding = false;
 
             }
 
