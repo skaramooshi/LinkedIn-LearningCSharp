@@ -4,11 +4,18 @@ using System.ComponentModel.DataAnnotations;
 
 namespace SchoolTracker
 {
+    enum School
+    {
+        Hogwarts,
+        Harvard,
+        MiT
+    }
     class Program
     {
+        static List<Student> students = new List<Student>();
+
         static void Main(string[] args)
         {
-            var students = new List<Student>();
             
             var adding = true;
 
@@ -21,6 +28,8 @@ namespace SchoolTracker
                     newStudent.Name = Util.Console.Ask("Student Name: ");
 
                     newStudent.Grade = Util.Console.AskInt("Student Grade: ");
+
+                    newStudent.School = (School) Util.Console.AskInt("School Name (Type corresponding number): \n 0: Hogwarts \n 1: Harvard \n 2: MiT \n");
 
                     newStudent.Birthday = Util.Console.Ask("Student Birthday: ");
 
@@ -51,17 +60,34 @@ namespace SchoolTracker
 
             foreach (var student in students)
             {
-
-            
                 Console.WriteLine("Name: {0}, Grade: {1}", student.Name, student.Grade);
-
             }
+            Exports();
         }
     
         static void Import()
         {
             var importedStudent = new Student("jenny", 86, "Birthday", "Address", 123456);
             Console.WriteLine(importedStudent.Name);
+        }
+
+        static void Exports()
+        {
+            foreach (var student in students)
+            {
+                switch (student.School)
+                {
+                    case School.Hogwarts:
+                        Console.WriteLine("Exporting to Hogwarts");
+                        break;
+                    case School.Harvard:
+                        Console.WriteLine("Exporting to Harvard");
+                        break;
+                    case School.MiT:
+                        Console.WriteLine("Exporting to MiT");
+                        break;
+                }
+            }
         }
     
     }
@@ -84,6 +110,7 @@ namespace SchoolTracker
         
         public int Grade;
         public string Birthday;
+        public School School;
 
         public Student()
         {
